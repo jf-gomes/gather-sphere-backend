@@ -47,7 +47,7 @@ async function authUser(request, response){
         return response.status(422).json({ response: 'Wrong password' })
     }
     try{
-        const secret = process.env.SECRET
+        const secret = 'OIASJasddLKDJASLKDJASDLKASJDlkjdlkasdASLKDJASDLKAWJDOIA'
         const token = jwt.sign({
             id: user._id
         }, secret)
@@ -75,7 +75,7 @@ function verifyToken(request, response, next){
         return response.status(401).json({ response: 'Access denied' })
     }
     try{
-        const secret = process.env.SECRET
+        const secret = 'OIASJasddLKDJASLKDJASDLKASJDlkjdlkasdASLKDJASDLKAWJDOIA'
         jwt.verify(token, secret)
         next()
     }
@@ -90,7 +90,7 @@ function requirePassword(request, response, next){
     if (!password){
         return response.status(401).json({ response: 'Access denied' })
     } else {
-        if (password == process.env.PASSWORD){
+        if (password == 'uwGfQquUX1ndfROQjZSVXFx9Ky4BnXhj9tIIkSctzvs9Z6waBQ'){
             next()
         } else {
             response.status(400).json({ response: 'Invalid password' })
